@@ -1,24 +1,49 @@
-<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
-    <plugin-info>
-        <description>${project.description}</description>
-        <version>${project.version}</version>
-        <vendor name="${project.organization.name}" url="${project.organization.url}" />
-        <param name="plugin-icon">images/pluginIcon.png</param>
-        <param name="plugin-logo">images/pluginLogo.png</param>
-    </plugin-info>
+<?xml version="1.0" encoding="UTF-8"?>
 
-    <!-- add our i18n resource -->
-    <resource type="i18n" name="i18n" location="TestPmo3"/>
-    
-    <!-- add our web resources -->
-    <web-resource key="TestPmo3-resources" name="TestPmo3 Web Resources">
-        <dependency>com.atlassian.auiplugin:ajs</dependency>
-        
-        <resource type="download" name="TestPmo3.css" location="/css/TestPmo3.css"/>
-        <resource type="download" name="TestPmo3.js" location="/js/TestPmo3.js"/>
-        <resource type="download" name="images/" location="/images"/>
-
-        <context>TestPmo3</context>
-    </web-resource>
-    
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2"> 
+  <plugin-info> 
+    <description>${project.description}</description>  
+    <version>${project.version}</version>  
+    <vendor name="${project.organization.name}" url="${project.organization.url}"/>  
+    <param name="plugin-icon">images/pluginIcon.png</param>  
+    <param name="plugin-logo">images/pluginLogo.png</param> 
+  </plugin-info>  
+  <!-- add our i18n resource -->  
+  <resource type="i18n" name="i18n" location="TestPmo3"/>  
+  <!-- add our web resources -->  
+  <web-resource key="TestPmo3-resources" name="TestPmo3 Web Resources"> 
+    <dependency>com.atlassian.auiplugin:ajs</dependency>  
+    <resource type="download" name="TestPmo3.css" location="/css/TestPmo3.css"/>  
+    <resource type="download" name="TestPmo3.js" location="/js/TestPmo3.js"/>  
+    <resource type="download" name="images/" location="/images"/>  
+    <context>TestPmo3</context> 
+  </web-resource>  
+  <servlet name="Test 1" i18n-name-key="test-1.name" key="test-1" class="ru.pmo.test3.servlet.Test1"> 
+    <description key="test-1.description">The Test 1 Plugin</description>  
+    <url-pattern>/test1</url-pattern> 
+  </servlet>  
+  <web-item name="Test2" i18n-name-key="test-2.name" key="test-2" section="admin_plugins_menu/sec-1" weight="1000"> 
+    <description key="test-2.description">The Test2 Plugin</description>  
+    <label key="Plug test"/>  
+    <link linkId="test-2-link">/secure/admin/NewWebworkAction.jspa</link>
+  </web-item>  
+  <web-section name="Sec1" i18n-name-key="sec-1.name" key="sec-1" location="admin_plugins_menu" weight="1000"> 
+    <description key="sec-1.description">The Sec1 Plugin</description>  
+    <label key=""/> 
+  </web-section>  
+  <webwork1 key="new-webwork" name="New Webwork" i18n-name-key="new-webwork.name"> 
+    <description key="new-webwork.description">The New Webwork Plugin</description>  
+    <actions> 
+      <action name="ru.pmo.test3.jira.webwork.NewWebworkAction" alias="NewWebworkAction"> 
+        <view name="success">/templates/new-webwork/success.vm</view>  
+        <view name="input">/templates/new-webwork/input.vm</view>  
+        <view name="error">/templates/new-webwork/error.vm</view> 
+      </action> 
+    </actions> 
+  </webwork1>  
+  <customfield-type name="Prj Picker" i18n-name-key="prj-picker.name" key="prj-picker" class="ru.pmo.test3.jira.customfields.PrjPicker"> 
+    <description key="prj-picker.description">The Prj Picker Plugin</description>  
+    <resource name="view" type="velocity" location="/templates/customfields/prj-picker/view.vm"/>  
+    <resource name="edit" type="velocity" location="/templates/customfields/prj-picker/edit.vm"/> 
+  </customfield-type>
 </atlassian-plugin>
