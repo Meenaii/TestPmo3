@@ -1,0 +1,21 @@
+<head>
+    <title>Edit parameters</title>
+    <meta name="decorator" content="atl.general">
+</head>
+<form class="aui" action="" method="POST">
+    <div class="field-group">
+        <label for="select-example">Options</label>
+        <select class="select" id="select-option" name="select-example">
+            <option>#{option}</option>
+            <option>Select</option>
+            <option>Difference</option>
+            <option>Ratio</option>
+        </select>
+    </div>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="button submit" type="submit" value="Save" id="comment-save-button">
+        </div>
+    </div>
+</form>
